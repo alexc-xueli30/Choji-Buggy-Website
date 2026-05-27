@@ -39,12 +39,9 @@ export async function POST(req: NextRequest) {
       { expiresIn: '24h' }
     )
 
-    // BUG: Returns { userId, token } but frontend useAuth hook expects { user_id, access_token }
-    // This mismatch means login never actually works correctly
-    // The frontend login function destructures { user_id, access_token } which are both undefined
     return NextResponse.json({
-      userId: user.id,    // BUG: should be user_id to match frontend expectation
-      token,              // BUG: should be access_token to match frontend expectation
+      user_id: user.id,
+      access_token: token,
       user: {
         id: user.id,
         userId: user.id,
