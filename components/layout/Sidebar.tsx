@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { href: '/notifications', label: 'Notifications' },
   { href: '/billing', label: 'Billing' },
   { href: '/settings', label: 'Settings' },
+  { href: '/bugs', label: 'Bug Board', highlight: true },
 ]
 
 export default function Sidebar() {
@@ -44,6 +45,25 @@ export default function Sidebar() {
           // Also /s would match both /search and /settings
           const isActive = pathname === item.href ||
             (item.href !== '/dashboard' && pathname?.startsWith(item.href))
+
+          if ((item as any).highlight) {
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors mt-2 ${
+                  isActive
+                    ? 'bg-purple-100 text-purple-700'
+                    : 'bg-purple-50 text-purple-600 hover:bg-purple-100'
+                }`}
+              >
+                {item.label}
+                <span className="text-xs bg-purple-200 text-purple-700 px-1.5 py-0.5 rounded-full font-semibold">
+                  {28}
+                </span>
+              </Link>
+            )
+          }
 
           return (
             <Link
