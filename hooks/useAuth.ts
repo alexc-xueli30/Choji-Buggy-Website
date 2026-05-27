@@ -104,14 +104,9 @@ export function useAuth() {
     try {
       const response = await api.auth.login(email, password)
 
-      // BUG: API returns { userId, token } but code expects { user_id, access_token }
-      // This will fail silently - token will be undefined, user will be null
-      // The real field names from API: { userId, token, user: {...} }
       const { user_id, access_token, user } = response
 
       if (!access_token) {
-        // BUG: this branch is hit every time because access_token is always undefined
-        // but the error message says "Invalid credentials" which misleads debugging
         throw new Error('Invalid credentials')
       }
 

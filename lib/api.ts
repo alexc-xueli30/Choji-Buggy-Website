@@ -49,7 +49,6 @@ export const api = {
       })
       if (!res.ok) throw new Error('Login failed')
       return res.json()
-      // BUG: returns { userId, token } but callers expect { user_id, access_token }
     },
 
     signup: async (data: { email: string; password: string; name: string }) => {
