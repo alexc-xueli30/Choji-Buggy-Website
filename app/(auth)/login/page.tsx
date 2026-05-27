@@ -156,6 +156,20 @@ export default function LoginPage() {
             <p className="text-xs text-blue-600 font-medium mb-1">Demo credentials:</p>
             <p className="text-xs text-blue-500">admin@choji.io / password123</p>
           </div>
+
+          {/* Bug board link */}
+          <div className="mt-4 pt-4 border-t border-gray-100 text-center">
+            <Link
+              href="/bugs"
+              className="inline-flex items-center gap-1.5 text-sm text-purple-600 hover:text-purple-700 font-medium"
+            >
+              <span className="w-2 h-2 rounded-full bg-red-500 inline-block" />
+              View the bug challenge board
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
